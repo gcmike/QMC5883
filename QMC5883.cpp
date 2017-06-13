@@ -51,12 +51,12 @@ void QMC5883::calculate() {
   delay(50);
   Wire.requestFrom(add, 6);
   while(Wire.available()>0){
-    nowZ = Wire.read();
-    nowZ |= Wire.read()<<8;
     nowX = Wire.read();
     nowX |= Wire.read()<<8;
     nowY = Wire.read();
     nowY |= Wire.read()<<8;
+    nowZ = Wire.read();
+    nowZ |= Wire.read()<<8;
   }
 }
 
