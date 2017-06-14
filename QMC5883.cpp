@@ -2,9 +2,11 @@
 /*
   For modified module QMC5883 instead of HMC5883.
   Call calculate() function before using getX(), getY(), and getZ()
+  Or directly use getHeading('z') for getting the heading angle with 'z' axis
+  pointing upward. Use a single lower-case letter to indicate the axis.
   
   Author: Michael Huang
-  Version: V1.0 - 20170612
+  Version: V1.2 - 20170612
 */
 /**************************************************************************/
 
@@ -70,4 +72,11 @@ int QMC5883::getY() {
 
 int QMC5883::getZ() {
   return nowZ;
+}
+
+float QMC5883::getHeading(uint8_t up) {
+  if(up == 'x') return atan2(nowZ, nowY);
+  else if(up == 'y') return atan2(nowX, nowZ);
+  else if(up == 'z') return atan2(nowY, nowX);
+  else return 0.0;
 }
