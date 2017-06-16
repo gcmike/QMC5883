@@ -29,6 +29,7 @@ class QMC5883{
   int getY(void);
   int getZ(void);
   float getHeading(uint8_t);
+  float getHeadingDegree(uint8_t);
 
  private:
   uint8_t add;
