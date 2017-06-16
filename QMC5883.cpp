@@ -80,3 +80,20 @@ float QMC5883::getHeading(uint8_t up) {
   else if(up == 'z') return atan2(nowY, nowX);
   else return 0.0;
 }
+
+float QMC5883::getHeadingDegree(uint8_t up) {
+  float tmp;
+  if(up == 'x'){
+    tmp = atan2(nowZ, nowY)*180/3.14159;
+    if(tmp < 0) tmp += 360;
+    return tmp;
+  }else if(up == 'y'){
+    tmp = atan2(nowX, nowZ)*180/3.14159;
+    if(tmp < 0) tmp += 360;
+    return tmp;
+  }else if(up == 'z'){
+    tmp = atan2(nowY, nowX)*180/3.14159;
+    if(tmp < 0) tmp += 360;
+    return tmp;
+  }else return 0.0;
+}
